@@ -87,4 +87,4 @@ client.on("messageCreate", async message => {
 
 });
 
-client.login(botConfig.token);
+bot.login(process.env.token);
