@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
         .addFields(
             { name: 'Founder', value: `> <@486559825984225283>`},
             { name: 'ID', value: `> ${message.guild.id}`},
-            { name: "Bots", value: `> 9`},
+            { name: "Bots", value: `> 8`},
             { name: "People", value: `> ${message.guild.memberCount - message.guild.members.cache.filter(m =>m.user.bot).size}`},
             { name: "Created on", value: `> ${moment(message.guild.createdAt).format('LL')}`},
             { name: "Joined on", value: `> ${message.member.joinedAt.toString()}`}
@@ -35,5 +35,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'serverinfo',
     category: 'info',
-    description: 'Met dit commando geeft de bot info weer over de server.'
+    description: 'Met dit commando geeft de bot info weer over de server.',
+    aliases: []
 }

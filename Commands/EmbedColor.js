@@ -52,5 +52,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'ecolor',
     category: 'info',
-    description: 'Met dit commando geeft de bot de embed kleuren mee.'
+    description: 'Met dit commando geeft de bot de embed kleuren mee.',
+    aliases: []
 }

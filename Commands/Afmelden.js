@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
 
     if (!message.member.roles.cache.has('682635913431482471')) return message.reply('> Jij kan dit niet');
@@ -37,5 +37,6 @@ return message.reply("> U bent succesvol afgemeld.")
 module.exports.help = {
     name: "afmelden",
     category: 'staff',
-    description: 'Met dit commando kan een stafflid zich afmelden.'
+    description: 'Met dit commando kan een stafflid zich afmelden.',
+    aliases: []
 }

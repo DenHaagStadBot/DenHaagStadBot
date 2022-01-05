@@ -1,4 +1,5 @@
 const discord = require('discord.js');
+const botConfig = require('../botConfig.json');
 
 module.exports.run = async (client, message, args) => {
 
@@ -8,11 +9,12 @@ module.exports.run = async (client, message, args) => {
         .addFields(
             { name: 'Bot name', value: `> ${client.user.username}` },
             { name: 'Bot ID', value: `> ${client.user.id}` },
+            { name: 'Prefix', value: `> ${botConfig.prefix}` },
             { name: 'Made by', value: `> <@712621794053587016>` },
             { name: 'Created on', value: `> Visual Studio Code` },
-            { name: 'Discord.js', value: `> 13.1.0` },
+            { name: 'Discord.js', value: `> ${package.dependencies["discord.js"]}`},
             { name: 'Platform', value: `> MacOS` },
-            { name: 'Last update', value: `> 26 Okt. 2021` },
+            { name: 'Last update', value: `> 5 Jan. 2022` },
             { name: 'Created on', value: `> 15 Aug. 2021` }
         )
         .setThumbnail('https://media.discordapp.net/attachments/755878713668796446/872847136478351380/image0.png')
@@ -36,5 +38,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'botinfo',
     category: 'info',
-    description: 'Met dit commando geeft de bot info weer over zichzelf.'
+    description: 'Met dit commando geeft de bot info weer over zichzelf.',
+    aliases: []
 }

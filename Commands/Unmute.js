@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
 
     // !tempmute persoon tijd (h,m,s).
 
-    if (!message.member.roles.cache.has('682635913431482471')) return message.reply('> Alleen server moderators kan dit commando gebruiken.');
+    if (!message.member.roles.cache.has('682635913431482471')) return message.reply('> Jij kan dit niet');
 
     if (!args[0]) return message.reply("> Geen gebruiker opgegeven.");
 
@@ -12,12 +12,14 @@ module.exports.run = async (client, message, args) => {
 
     if (!unmutePersoon) return message.reply("> Kan de gebruiker niet vinden.");
 
-    if (unmutePersoon.permissions.has('MANAGE_MESSAGES')) return message.reply('> Je kan geen server moderators muten.');
+    // if (unmutePersoon.permissions.has('MANAGE_MESSAGES')) return message.reply('> Je kan geen server moderators unmuten.');
 
-    var muteRole = message.guild.roles.cache.get('882624046251012106');
+    var muteRole = message.guild.roles.cache.get('905558383791308830');
     if (!muteRole) return message.channel.send("> De rol muted bestaat niet.");
 
-    const muteChannel = message.guild.channels.cache.find(c => c.name == "「📃」user-logs");
+    const muteChannel = message.member.guild.channels.cache.get('688467758853521446');
+
+    var reden = args.slice(1).join(" ") || 'Geen reden opgegeven.';
 
      var muteEmbed = new discord.MessageEmbed()
       .setColor('#f73115')
@@ -25,14 +27,15 @@ module.exports.run = async (client, message, args) => {
       .setTimestamp()
       .addFields(
         { name: 'Geunmute persoon', value: `> ${unmutePersoon} (${unmutePersoon.id})`},
-        { name: 'Geunmute door', value: `> ${message.author}`}
+        { name: 'Geunmute door', value: `> ${message.author}`},
+        { name: 'Reden', value: `> ${reden}`}
       )
-      muteChannel.send({embeds: [muteEmbed]})
+      muteChannel.send({embeds: [muteEmbed]});
 
 
     unmutePersoon.roles.remove(muteRole.id);
 
-    message.channel.send(`${unmutePersoon} is geunmute`);
+    message.channel.send(`> ${unmutePersoon} is geunmute`);
 
   
 }
@@ -40,5 +43,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "unmute",
     category: 'staff',
-    description: 'Met dit commando kan een stafflid een lid unmuten.'
+    description: 'Met dit commando kan een stafflid een lid unmuten.',
+    aliases: []
 }

@@ -3,7 +3,7 @@ const fs = require('fs');
 
 module.exports.run = async (client, message, args) => {
 
-    if (!message.member.permissions.has('KICK_MEMBERS')) return message.reply('> Dit commando kan alleen uitgevoerd worden door een server moderator.');
+    if (!message.member.roles.cache.has('682635913431482471')) return message.reply('> Jij kan dit niet');
 
     if (!args[0]) return message.reply('> Je moet een gebruiker opgeven die je wilt warnen.');
 
@@ -53,5 +53,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'warn',
     category: 'staff',
-    description: 'Met dit commando kan een server moderator een lid warnen.'
+    description: 'Met dit commando kan een server moderator een lid warnen.',
+    aliases: []
 }

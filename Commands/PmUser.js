@@ -1,6 +1,8 @@
 const discord = require("discord.js");
  
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
+
+    if (!message.member.roles.cache.has('682635913431482471')) return message.reply('> Jij kan dit niet');
  
     if (!args[0]) return message.reply("> Geen gebruiker opgegeven.");
  
@@ -21,5 +23,6 @@ module.exports.run = async (bot, message, args) => {
 module.exports.help = {
     name: "pm",
     category: 'general',
-    description: 'Met dit commando stuurt de bot jou bericht.'
+    description: 'Met dit commando stuurt de bot jou bericht.',
+    aliases: []
 }

@@ -2,11 +2,13 @@ const discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 
-    if (!message.member.permissions.has('KICK_MEMBERS')) return message.reply('> Deze command kan alleen uitgevoerd worden door server moderators.');
+    if (!message.member.roles.cache.has('682635913431482471')) return message.reply('> Jij kan dit niet');
 
     if (!message.guild.me.permissions.has('KICK_MEMBERS')) return message.reply('> De bot heeft niet de juiste permissies om iemand te kunnen kicken.');
 
     if (!args[0]) return message.reply('> Je moet een gebruiker meegeven om die te kunnen kicken.');
+
+    if (args[1]) message.reply('> Als het niet werkt probeer dit: ,kick \`<@ID-Gebruiker>\` Reden.');
 
     if (!args[1]) return message.reply('> Je moet een reden meegeven om iemand te kunnen kicken.');
 
@@ -73,7 +75,7 @@ module.exports.run = async (client, message, args) => {
 
         switch (id) {
             case "yesknop":
-                kickUser.kick(reason)
+                kickUser.kick(`Reden: ${reason}`  + ` Gekickt door: ${message.author.username}`)
                 interactionButton.reply({ embeds: [kickEmbed] })
                  return kickLogChannel.send({ embeds: [kickLogEmbed] });
 
@@ -90,5 +92,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'kick',
     category: 'staff',
-    description: 'Met dit commando kan een stafflid een lid kicken.'
+    description: 'Met dit commando kan een stafflid een lid kicken.',
+    aliases: []
 }

@@ -25,7 +25,14 @@ module.exports.run = async (client, message, args) => {
 
     message.reply(`> Je suggestie is verzonden! Je kan hem vinden in <#752146535722254432>.`);
 
-    return reviewChannel.send({ embeds: [reviewEmbed] });
+    var msg = await reviewChannel.send({embeds: [reviewEmbed]})
+
+    await msg.react('🟩')
+    await msg.react('🟥')
+    
+    
+
+    return;
 
 
 
@@ -34,5 +41,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'suggestie',
     category: 'info',
-    description: 'Met dit commando kan je een suggestie aanmaken.'
+    description: 'Met dit commando kan je een suggestie aanmaken.',
+    aliases: []
 }

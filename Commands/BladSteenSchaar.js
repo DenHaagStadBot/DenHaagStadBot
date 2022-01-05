@@ -1,8 +1,8 @@
 const discord = require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
-    if (!args[0]) return message.reply("Gebruik sps <steen, papier, schaar>"); 
+    if (!args[0]) return message.reply("> Gebruik sps \`steen, papier, schaar\`."); 
 
     var options = ["steen", "papier", "schaar"];
 
@@ -12,14 +12,14 @@ module.exports.run = async (bot, message, args) => {
 
         if (result == "papier") {
 
-            return message.reply(`Ik heb ${result} :notepad_spiral:, Ik win.`);
+            return message.reply(`> Ik heb ${result} :notepad_spiral:, Ik win.`);
 
         } else if (result == "schaar") {
 
-            return message.reply(`Ik heb ${result} :scissors:, jij wint.`);
+            return message.reply(`> Ik heb ${result} :scissors:, jij wint.`);
         } else if (result == "steen") {
 
-            return message.reply(`Ik heb ${result} :moyai:, het is gelijkspel.`);
+            return message.reply(`> Ik heb ${result} :moyai:, het is gelijkspel.`);
 
         }
 
@@ -28,14 +28,14 @@ module.exports.run = async (bot, message, args) => {
 
         if (result == "schaar") {
 
-            return message.reply(`Ik heb ${result} :scissors:, Ik win.`);
+            return message.reply(`> Ik heb ${result} :scissors:, Ik win.`);
 
         } else if (result == "steen") {
 
-            return message.reply(`Ik heb ${result} :moyai:, jij wint.`);
+            return message.reply(`> Ik heb ${result} :moyai:, jij wint.`);
         } else if (result == "papier") {
 
-            return message.reply(`Ik heb ${result} :notepad_spiral:, het is gelijkspel.`);
+            return message.reply(`> Ik heb ${result} :notepad_spiral:, het is gelijkspel.`);
 
         }
 
@@ -44,14 +44,14 @@ module.exports.run = async (bot, message, args) => {
 
         if (result == "steen") {
 
-            return message.reply(`Ik heb ${result} :moyai:, Ik win.`);
+            return message.reply(`> Ik heb ${result} :moyai:, Ik win.`);
 
         } else if (result == "papier") {
 
-            return message.reply(`Ik heb ${result} :notepad_spiral:, jij wint.`);
+            return message.reply(`> Ik heb ${result} :notepad_spiral:, jij wint.`);
         } else if (result == "schaar") {
 
-            return message.reply(`Ik heb ${result} :scissors:, het is gelijkspel.`);
+            return message.reply(`> Ik heb ${result} :scissors:, het is gelijkspel.`);
 
         }
 
@@ -61,6 +61,7 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
     name: "sps",
-    category: 'general',
-    description: 'Met dit commando kan je blad steen schaar spelen tegen de bot.'
+    category: 'game',
+    description: 'Met dit commando kan je blad steen schaar spelen tegen de bot.',
+    aliases: []
 }

@@ -18,5 +18,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "aanmelden",
     category: 'staff',
-    description: 'Met dit commando kan een stafflid zich terug aanelden.'
+    description: 'Met dit commando kan een stafflid zich terug aanelden.',
+    aliases: []
 }

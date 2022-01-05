@@ -1,7 +1,7 @@
 const discord = require("discord.js");
 const fetch = require('node-fetch');
 
-module.exports.run = async (bot, message, args) => { 
+module.exports.run = async (client, message, args) => { 
 
     fetch('https://www.reddit.com/r/lookatmydog/random/.json').then(resp => resp.json()).then(respOmgevormd => {
 
@@ -26,5 +26,8 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-    name: "dog"
+    name: "dog",
+    category: "general",
+    description: "Met dit commando stuurt de bot een foto van een hond.",
+    aliases: []
 }

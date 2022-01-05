@@ -5,11 +5,13 @@ module.exports.run = async (client, message, args) => {
 
     // !tempmute persoon tijd (h,m,s).
 
-    if (!message.member.roles.cache.has('682635913431482471')) return message.reply('> Alleen server moderators kan dit commando gebruiken.');
+    if (!message.member.roles.cache.has('682635913431482471')) return message.reply('> Jij kan dit niet');
 
     if (!args[0]) return message.reply("> Geen gebruiker opgegeven.");
 
     if (!args[1]) return message.reply("> Geen tijd opgegeven.");
+
+    if (args[1]) 
 
     if (!args[2]) return message.reply("> Geen reden opgegeven.");
 
@@ -19,7 +21,7 @@ module.exports.run = async (client, message, args) => {
 
     if (mutePerson.permissions.has('MANAGE_MESSAGES')) return message.reply('> Je kan geen server moderators muten.');
 
-    var muteRole = message.guild.roles.cache.get('882624046251012106');
+    var muteRole = message.guild.roles.cache.get('905558383791308830');
     if (!muteRole) return message.channel.send("> De rol muted bestaat niet.");
 
     var muteTime = args[1];
@@ -32,7 +34,7 @@ module.exports.run = async (client, message, args) => {
     await (mutePerson.roles.add(muteRole.id));
     message.channel.send(`> ${mutePerson} is gemuted voor ${muteTime}`);
 
-    const muteChannel = message.guild.channels.cache.find(c => c.name == "「📃」user-logs");
+    const muteChannel = message.member.guild.channels.cache.get('688467758853521446');
 
     var muteEmbed = new discord.MessageEmbed()
     .setColor('#f73115')
@@ -62,7 +64,7 @@ module.exports.run = async (client, message, args) => {
          .addFields(
             { name: 'Geunmute persoon', value: `> ${mutePerson} (${mutePerson.id})`},
             { name: 'Geunmute door', value: `> <@866387719428243486>`},
-            { name: "Reden", value: `> Auto`}
+            { name: 'Reden', value: `> Auto`}
           )
        
         muteChannel.send({embeds: [muteEmbed]})
@@ -74,5 +76,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "mute",
     category: 'staff',
-    description: 'Met dit commando kan een stafflid een lid muten.'
+    description: 'Met dit commando kan een stafflid een lid muten.',
+    aliases: []
 }

@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
     const quotes = require("../Quotes.json")
 
@@ -18,6 +18,7 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
     name: "quote",
-    category: 'general',
-    description: 'Met dit commando geeft de bot je een quote.'
+    category: 'game',
+    description: 'Met dit commando geeft de bot je een quote.',
+    aliases: []
 }

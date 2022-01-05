@@ -2,13 +2,15 @@ const discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 
-    if (!message.member.permissions.has('BAN_MEMBERS')) return message.reply('> Deze command kan alleem maar gebruikt worden door moderators.');
+    if (!message.member.roles.cache.has('682635913431482471')) return message.reply('> Jij kan dit niet');
 
     if (!message.guild.me.permissions.has('BAN_MEMBERS')) return message.reply('> De bot heeft niet de juiste permissies om iemand te bannen.');
 
     if (!args[0]) return message.reply('> Je moet een gebruiker meegeven die je wilt bannen.');
 
     if (!args[1]) return message.reply('> Je moet een reden meegeven om iemand te kunnen bannen.');
+
+    if (args[1]) message.reply('> Als het niet werkt probeer dit: ,kick \`<@ID-Gebruiker>\` Reden.');
 
     var banUser = message.guild.members.cache.get(message.mentions.users.first().id || message.guild.members.get(args[0]).id);
 
@@ -24,8 +26,8 @@ module.exports.run = async (client, message, args) => {
             { name: 'Banned', value: `> ${banUser}, ${banUser.id}` },
             { name: 'Banned by', value: `> ${message.author}, ${message.author.id}` },
             { name: 'Reason', value: `> ${reason}` })
-            .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png')
-            .setTimestamp()
+        .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png')
+        .setTimestamp()
 
     var banLogEmbed = new discord.MessageEmbed()
         .setColor('#f73115')
@@ -33,8 +35,8 @@ module.exports.run = async (client, message, args) => {
             { name: 'Banned', value: `> ${banUser}, ${banUser.id}` },
             { name: 'Banned by', value: `> ${message.author}, ${message.author.id}` },
             { name: 'Reason', value: `> ${reason}` })
-            .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png')
-            .setTimestamp()
+        .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png')
+        .setTimestamp()
 
     const banLogChannel = message.member.guild.channels.cache.get('688467758853521446');
 
@@ -65,7 +67,7 @@ module.exports.run = async (client, message, args) => {
     const collector = message.channel.createMessageComponentCollector({
         filter,
         max: 1
-        });
+    });
 
     collector.on("collect", (interactionButton) => {
 
@@ -73,15 +75,16 @@ module.exports.run = async (client, message, args) => {
 
         switch (id) {
             case "yesknop":
-                banUser.ban({ reason: reason })
+                banUser.ban({ reason: `Reden: ${reason}` + ` Verbannen door: ${message.author.username}` })
                 interactionButton.reply({ embeds: [banEmbed] })
-                 return banLogChannel.send({ embeds: [banLogEmbed] });
+                return banLogChannel.send({ embeds: [banLogEmbed] })
 
             case "noknop":
                 return interactionButton.reply("> Ban geanuleert.");
 
 
         }
+
     });
 
 
@@ -90,5 +93,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'ban',
     category: 'staff',
-    description: 'Met dit commando kan een Discord moderator een server lid bannen.'
+    description: 'Met dit commando kan een server moderator een server lid bannen.',
+    aliases: []
 }

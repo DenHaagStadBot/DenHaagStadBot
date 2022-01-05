@@ -25,7 +25,9 @@ module.exports.run = async (client, message, args) => {
 
     message.reply(`> Je bug is verzonden! Je kan hem vinden in <#752146535529185311>.`);
 
-    return reviewChannel.send({ embeds: [reviewEmbed] });
+    var msg = await reviewChannel.send({embeds: [reviewEmbed]})
+
+    return;
 
 
 
@@ -34,5 +36,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'bug',
     category: 'info',
-    description: 'Met dit commando kan je een bug melden.'
+    description: 'Met dit commando kan je een bug melden.',
+    aliases: []
 }

@@ -26,5 +26,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "videoidee",
     category: 'info',
-    description: 'Met dit commando kan je een video idee aanmaken.'
+    description: 'Met dit commando kan je een video idee aanmaken.',
+    aliases: []
 }

@@ -28,6 +28,7 @@ module.exports.run = async(client, message, args) => {
 
 module.exports.help = {
     name: "8ball",
-    category: 'general',
-    description: 'Met dit commando geeft de bot een random antwoord op je vraag.'
+    category: 'game',
+    description: 'Met dit commando geeft de bot een random antwoord op je vraag.',
+    aliases: []
 }

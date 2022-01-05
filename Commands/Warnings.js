@@ -20,5 +20,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'warnings',
     category: 'info',
-    description: 'With this command can you see how much warns you have.'
+    description: 'Met dit commando kan je bekijken hoeveel warns je hebt.',
+    aliases: []
 }

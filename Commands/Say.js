@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 
-module.exports.run = async(bot, message, args) => {
+module.exports.run = async(client, message, args) => {
     
 var reason = args.slice(0).join(" ");
 
@@ -12,6 +12,7 @@ var reason = args.slice(0).join(" ");
 
 module.exports.help = {
     name: "say",
-    category: 'general',
-    description: 'Met dit commando zegt de bot wat jij hebt gezegd.'
+    category: 'game',
+    description: 'Met dit commando zegt de bot wat jij hebt gezegd.',
+    aliases: []
 }

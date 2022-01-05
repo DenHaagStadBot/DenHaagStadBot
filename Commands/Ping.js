@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (client, message, args) => {
 
     var pongEmbed = new discord.MessageEmbed()
     .setDescription("Pong: " + (message.createdTimestamp - Date.now()) + " ms")
@@ -15,6 +15,7 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
     name: "ping",
-    category: 'general',
-    description: 'Met dit commando kan je bekijken hoeveel ping je hebt.'
+    category: 'info',
+    description: 'Met dit commando kan je bekijken hoeveel ping je hebt.',
+    aliases: []
 }
